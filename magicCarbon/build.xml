@@ -1,0 +1,69 @@
+<project name="magicCarbon" default="dist" basedir=".">
+    <description>
+        Compiling project
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="dist"  location="dist"/>
+  <property name="doc"  location="doc"/>  
+    
+  <path id="magicCarbon.classpath">
+   <pathelement location="class"/>
+   <pathelement location="lib/jcommon-1.0.23.jar"/>
+   <pathelement location="lib/jfreechart-1.0.19.jar"/>
+  </path>
+  
+<target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${bin}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${bin}" includeantruntime="false" classpathref="magicCarbon.classpath">
+    <exclude name="carbon/model2/*.java" />
+    </javac> 
+  </target>
+
+  <target name="dist" depends="compile" description="generate the distribution" >
+    <jar jarfile="magicCarbon.jar" basedir="${bin}">
+     <manifest>
+       <attribute name="Main-Class" value="carbon/model/magicCarbon"/>
+       <attribute name="Class-Path" value="lib/jcommon-1.0.23.jar lib/jfreechart-1.0.19.jar"/>
+     </manifest> 
+    </jar>
+  </target>
+
+
+ <target name="javadoc" depends="init">
+  <delete dir="${doc}"/>
+  <mkdir dir="${doc}"/>
+  <javadoc
+  excludepackagenames="carbon.model2.*"
+  sourcepath="${src}"
+  destdir="${doc}"
+  classpathref="magicCarbon.classpath" >
+
+ 
+  </javadoc>
+ </target>
+
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${bin}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+
+  <target name="run" depends="dist">
+     <java jar="magicCarbon.jar" fork="true"/>
+    </target>
+
+
+</project>
