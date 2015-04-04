@@ -24,7 +24,7 @@ public class PlotTimeSeries extends Year {
 		try {
 		 ChartUtilities.saveChartAsJPEG(new File(chartOutput), chart, 500, 300);
 		 } catch (IOException e) {
-		  System.err.println("Problem occurred creating chart.");
+		  System.err.println("Problem creating chart.");
 		}
 		}
 
