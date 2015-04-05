@@ -1,8 +1,12 @@
 package carbon.plot;
 
-import javax.swing.JFrame;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /*
  *  Display Plots
@@ -14,30 +18,33 @@ import java.awt.*;
  */
 
 public class DisplayImage  {
-
-	public DisplayImage(final String image) {
+	
+	JFrame frame =new JFrame();  
+	
+	public DisplayImage(String image) throws IOException {
 		 
 		JPanel panel = addImageToPanel(image);
         addImageToFrame(panel);  
 
 		 }
 
-	private JPanel addImageToPanel(final String img) {
-	
-		ImageIcon image = new ImageIcon(img);
+	private JPanel addImageToPanel(String img) throws IOException {
+		
+		BufferedImage bufferedImage = ImageIO.read(new File(img));
+	   ImageIcon image = new ImageIcon(bufferedImage);
 		JLabel label = new JLabel(image);
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.add( label, BorderLayout.CENTER );
+	    panel.add(label, BorderLayout.CENTER );
 		return panel;
 	
 	}
 
 	private void addImageToFrame(JPanel panel) {
-		
-		JFrame frame =new JFrame();  
-		  frame.add(panel);  
+	
+		  frame.setContentPane(panel);  
 		  frame.setSize(600,400);  
 		  frame.setVisible(true);
+		 
 	}  
 		
 }

@@ -22,19 +22,22 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 	 public final JTextField startYearIn = new JTextField (7);
 	 public final JTextField YearsIn = new JTextField (7); 
 
-	 public final JTextField CarbonEnd = new JTextField (7);
-	 public final JTextField CarbonGtCEnd = new JTextField (7);
-	 public final JTextField YearEnd = new JTextField (7);
-	 public final JTextField RF = new JTextField (7); 
-	 public final JTextField Temperature = new JTextField (7); 
-	 public final JTextField RMSE = new JTextField (7); 
+	 public final JTextField endCarbon = new JTextField (7);
+	 public final JTextField addedCarbon = new JTextField (7);
+	 public final JTextField endYear = new JTextField (7);
+	 public final JTextField radiativeForcing = new JTextField (7); 
+	 public final JTextField endTemperature = new JTextField (7); 
+	 public final JTextField errorRMSE = new JTextField (7); 
 	 
-	 public final JTextField dfile = new JTextField (15); 
-	 public final JTextField pfile = new JTextField (15); 
+	 public final JTextField dataFile = new JTextField (15); 
+	 public final JTextField plotFile = new JTextField (15); 
 	
 	 JButton openJPGButton = new JButton("New plot file");
 	 JButton openDataButton = new JButton("New data file");
-	   
+	  
+	 String outputCarbonChart="chart-output.jpg";
+	 String outputCarbonData="outputfile.txt";
+	 
 	 List<JRadioButton> modelRadioButtons = new ArrayList<JRadioButton>();
      List<JRadioButton> simulationRadioButtons = new ArrayList<JRadioButton>();	
 	 List<JRadioButton> scenarioRadioButtons = new ArrayList<JRadioButton>();	
@@ -75,7 +78,24 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 	      public void actionPerformed(ActionEvent e) {
 	    	  fc.showOpenDialog(WindowSetUp.this);
 	    	  File file = fc.getSelectedFile();
-	    	  pfile.setText(file.getName());	 
+	    	  
+	    	  if (file == null) {
+	    		   plotFile.setText(outputCarbonChart);	
+	    		}
+	    	  
+	    	  else if (file.exists()) {
+	    		  int responseFileExist = JOptionPane.showConfirmDialog(WindowSetUp.this,
+	    		          "The file " + file.getName() + 
+	    		          " already exists. Do you want to replace the existing file?",
+	    		          "Ovewrite file", JOptionPane.YES_NO_OPTION,
+	    		          JOptionPane.WARNING_MESSAGE);
+	    		        if (responseFileExist != JOptionPane.YES_OPTION)
+	    		          return;
+	    		      } 
+	          
+	    	  else{
+	    	  plotFile.setText(file.getAbsolutePath());
+	    	  }
 	     }
 	  });
 	  
@@ -83,8 +103,13 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 	      @Override
 	      public void actionPerformed(ActionEvent e) {
 	    	  fc.showOpenDialog(WindowSetUp.this);
-	    	  File file = fc.getSelectedFile();
-	    	  dfile.setText(file.getName());
+	    	  File file = fc.getSelectedFile ();
+	    	  if (file == null) {
+	    		   dataFile.setText(outputCarbonData);	
+	    		}
+	    	  else{
+	    	  dataFile.setText(file.getAbsolutePath());
+	    	  }
 	     }
 	  });
 }
@@ -199,8 +224,8 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 		  C0In.setText("354.35");
 		  startYearIn.setText("1990");
 		  YearsIn.setText("100");
-		  pfile.setText("chart-output.jpg");
-		  dfile.setText("outputfile.txt");
+		  plotFile.setText("chart-output.jpg");
+		  dataFile.setText("outputfile.txt");
 	}
 
 	private List<JPanel> createPanelList() {
@@ -237,8 +262,8 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 
 	private JPanel createFilePanel() {
 		
-		  pfile.setEditable(false);
-		  dfile.setEditable(false);
+		  plotFile.setEditable(false);
+		  dataFile.setEditable(false);
 		 
 		  final JPanel leftPanel = new JPanel(new GridLayout(2,3));
 		  leftPanel.add(new JLabel("SELECT OUTPUT FILES"));
@@ -248,9 +273,9 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 		  
 		  final JPanel rightPanel = new JPanel(new GridLayout(5,1));
 		  rightPanel.add(new JLabel("Plot File"));
-		  rightPanel.add(pfile);
+		  rightPanel.add(plotFile);
 		  rightPanel.add(new JLabel("Data File"));
-		  rightPanel.add(dfile); 
+		  rightPanel.add(dataFile); 
 		  
 		  JCatPanel panel = new JCatPanel();
 		  JPanel outPanel = new JPanel();
@@ -262,31 +287,31 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 
 	private JPanel createOutputPanel() {
 		
-		CarbonEnd.setEditable(false);
-		  CarbonGtCEnd.setEditable(false);
-		  YearEnd.setEditable(false);
-		  RF.setEditable(false);
-		  Temperature.setEditable(false);
-		  RMSE.setEditable(false);
+		endCarbon.setEditable(false);
+		  addedCarbon.setEditable(false);
+		  endYear.setEditable(false);
+		  radiativeForcing.setEditable(false);
+		  endTemperature.setEditable(false);
+		  errorRMSE.setEditable(false);
 		
 		final JPanel leftPanel = new JPanel ( new GridLayout(8,1));
-		  leftPanel.add(new JLabel(" OUTPUTS"));
+		  leftPanel.add(new JLabel("SUMMARY OUTPUTS"));
 		  leftPanel.add(new JLabel(" End year "));
 		  leftPanel.add(new JLabel(" CO2 concentration end (ppm) "));
 		  leftPanel.add(new JLabel(" Additional atm C over period (GtC) "));
 		  leftPanel.add(new JLabel(" Radiative forcing (w/m2) "));
-		  leftPanel.add(new JLabel(" Temperature (deg C) "));
-		  leftPanel.add(new JLabel(" RMSE (Test only): "));
+		  leftPanel.add(new JLabel(" Temperature increase (deg C) "));
+		  leftPanel.add(new JLabel(" RMSE (Test only) "));
 		  leftPanel.add(new JLabel(""));
 		  
 		  final JPanel rightPanel = new JPanel ( new GridLayout(8,1));
 		  rightPanel.add(new JLabel(""));
-		  rightPanel.add(CarbonEnd);
-		  rightPanel.add(CarbonGtCEnd);
-		  rightPanel.add(YearEnd);
-		  rightPanel.add(RF);
-		  rightPanel.add(Temperature);
-		  rightPanel.add(RMSE);
+		  rightPanel.add(endYear);
+		  rightPanel.add(endCarbon);
+		  rightPanel.add(addedCarbon);
+		  rightPanel.add(radiativeForcing);
+		  rightPanel.add(endTemperature);
+		  rightPanel.add(errorRMSE);
 		  rightPanel.add(new JLabel(" "));
 		  JSideCatPanel panel = new JSideCatPanel();
 		  return panel.sideCatPanel(leftPanel,rightPanel);
@@ -374,15 +399,12 @@ public static void setEnabledAll(Container container, boolean enabled) {
 		int startYear=1990;
 		int Years=100;
 		
-		String outputCarbonChart="chart-output.jpg";
-		String outputCarbonData="outputfile.txt";
-		
-		if (dfile != null && !"".equals(dfile.getText())){
-			outputCarbonData=dfile.getText();
+		if (dataFile != null && !"".equals(dataFile.getText())){
+			outputCarbonData=dataFile.getText();
 		}
 			
 		if (C0In != null && !"".equals(C0In.getText())){
-			outputCarbonChart=pfile.getText();
+			outputCarbonChart=plotFile.getText();
 		}
 		
 		if (SIn != null && !"".equals(SIn.getText())){
@@ -404,23 +426,38 @@ public static void setEnabledAll(Container container, boolean enabled) {
 		RunModel rm = new RunModel();
 		
 	    if (sim==1){
+	    	System.out.format("Test Model");
 	    	rm.testModel(model,  outputCarbonData, outputCarbonChart);
-//	    	CarbonEnd.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-//	   	CarbonGtCEnd.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-//	    	YearEnd.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-//	    	RF.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-//	    	Temperature.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-//	    	RMSE.setText(String.valueOf(String.format("%.2f", rm.Ctl));
-	    	System.out.format("tm"); 
+	    	setSummaryData(rm);
 	    }
 	    else if (sim==2){
-	    	 rm.fixed_emissions(model, S, C0, startYear, Years, outputCarbonData, outputCarbonChart); 
-	    	  System.out.format("fe"); 
+	    	System.out.format("Fixed Emission Scenarios"); 
+	    	rm.fixed_emissions(model, S, C0, startYear, Years, outputCarbonData, outputCarbonChart); 
+	    	 setSummaryData(rm);
+	    	   
 	    }
 	    else if (sim==3){
-	    	rm.ipcc(model, scenario, outputCarbonData, outputCarbonChart);	
-	    	 System.out.format("ipcc"); 
+	    	System.out.format("IPCC Emission Scenarios"); 
+	    	rm.ipcc(model, scenario, outputCarbonData, outputCarbonChart);
+	    	setSummaryData(rm);
+	    	
 	    }
+	}
+
+	private void setSummaryData(RunModel rm) {
+		
+		endCarbon.setText(String.valueOf(String.format("%.2f",rm.getEndCarbon())));
+		addedCarbon.setText(String.valueOf(String.format("%.2f", rm.getAddedCarbon())));
+		endYear.setText(String.valueOf(String.format("%.0f", rm.getYearEnd())));
+		radiativeForcing.setText(String.valueOf(String.format("%.2f", rm.getRadiativeForcing())));
+		endTemperature.setText(String.valueOf(String.format("%.2f", rm.getEndTemperature())));
+		
+		if (rm.getError() != -99.0){
+		 errorRMSE.setText(String.valueOf(String.format("%.2f", rm.getError())));
+		}
+		else{
+		  errorRMSE.setText("N/A");
+		}
 	}
 	
 }

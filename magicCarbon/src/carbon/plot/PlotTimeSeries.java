@@ -3,6 +3,7 @@ package carbon.plot;
 
 import org.jfree.chart.*;
 import org.jfree.data.time.*;
+
 import java.io.*;
 
 public class PlotTimeSeries extends Year {
@@ -22,7 +23,9 @@ public class PlotTimeSeries extends Year {
 		"Atmospheric CO2 concentration", "Year", "CO2 (ppm)", 
 		dataset, false, true, true);
 		try {
-		 ChartUtilities.saveChartAsJPEG(new File(chartOutput), chart, 500, 300);
+		 File plot = new File(chartOutput);
+		ChartUtilities.saveChartAsJPEG(plot, chart, 500, 300);	
+		 new DisplayImage(chartOutput);
 		 } catch (IOException e) {
 		  System.err.println("Problem creating chart.");
 		}

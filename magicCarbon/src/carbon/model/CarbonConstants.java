@@ -16,7 +16,7 @@ package carbon.model;
 
  public static final int MAX_YEARS = 1000;     // For setting arrays, increase to run longer simulations
  public static final double PPM2GT = 2.123;  // Convert from PPM to GT Carbon
- 
+ public static final double LAMBDA_CLIMATIC_SENSITIVITY = 0.8; // Climatic sensitivity (K/wm^2) given in IPCC, TAR.
  
  /** CO2 concentration in ppm between 1959 and 2014
  * from NOAA Mauna Loa observatory record from:
