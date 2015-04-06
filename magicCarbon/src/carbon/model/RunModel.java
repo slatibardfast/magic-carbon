@@ -9,11 +9,13 @@ import carbon.plot.PlotTimeSeries;
 //import carbon.plot.DisplayImage;
 
 /**
- * 
- * @author will Grey
- * 
- *  @version 3/4/2015 
- *
+*  
+* @author will Grey
+* 
+*  @version 3/4/2015 
+* 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
  */
 
 public class RunModel  extends PlotTimeSeries{

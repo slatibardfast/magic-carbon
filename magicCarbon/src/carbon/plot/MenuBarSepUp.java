@@ -1,5 +1,16 @@
 package carbon.plot;
 
+/**
+ * 
+ * @author will Grey
+ * 
+ * @version  28/3/2015
+ * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
+ */
+
+
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -99,13 +110,15 @@ public class MenuBarSepUp extends JFrame {
 
 	private void aboutSetUp(JFrame gui) {
 		
-		final JPanel Panel = new JPanel ( new GridLayout(2,2));
+		final JPanel Panel = new JPanel ( new GridLayout(4,2));
 		Panel.add(new JLabel(" MagicCarbon 2015"));
 		Panel.add(new JLabel(" Author: Will Grey"));
+		Panel.add(new JLabel(" This is free and unencumbered software released into the public domain."));
+        Panel.add(new JLabel(" For more information, please refer to <http://unlicense.org/>"));
 		
 		gui.add(Panel);
 		gui.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		gui.setSize(200, 70);
+		gui.setSize(600, 100);
 		gui.setLocation(300, 300);
 		gui.setVisible(true);
 	

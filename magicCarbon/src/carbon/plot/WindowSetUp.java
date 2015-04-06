@@ -13,6 +13,16 @@ import java.awt.event.*;
 import carbon.JPanelTools.*;
 import carbon.model.RunModel;
 
+/**
+ * 
+ * @author will Grey
+ * 
+ * @version  28/3/2015
+ * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
+ */
+
 public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
  
 	private static final long serialVersionUID = 1L;
@@ -230,7 +240,7 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 
 	private List<JPanel> createPanelList() {
 		List<JPanel> panel = new  ArrayList<JPanel>();	
-
+		
 		panel.add(createSimulationPanel());
 		panel.add(createModelPanel());
 		panel.add(createScenariosPanel());
@@ -238,6 +248,7 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 		panel.add(createFilePanel());
 		panel.add(createOutputPanel());
 		panel.add(createButtonPanel());
+		
 		
 		return panel;
 	}
@@ -265,21 +276,22 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 		  plotFile.setEditable(false);
 		  dataFile.setEditable(false);
 		 
-		  final JPanel leftPanel = new JPanel(new GridLayout(2,3));
-		  leftPanel.add(new JLabel("SELECT OUTPUT FILES"));
-		  leftPanel.add(new JLabel(""));
-		  leftPanel.add(openJPGButton);
-		  leftPanel.add(openDataButton);
+		  final JPanel topPanel = new JPanel(new GridLayout(2,3));
+		  topPanel.add(new JLabel("SELECT OUTPUT FILES"));
+		  topPanel.add(new JLabel(""));
+		  topPanel.add(openJPGButton);
+		  topPanel.add(openDataButton);
 		  
-		  final JPanel rightPanel = new JPanel(new GridLayout(5,1));
-		  rightPanel.add(new JLabel("Plot File"));
-		  rightPanel.add(plotFile);
-		  rightPanel.add(new JLabel("Data File"));
-		  rightPanel.add(dataFile); 
-		  
+		  final JPanel bottomPanel = new JPanel(new GridLayout(5,1));
+		  bottomPanel.add(new JLabel("Plot File"));
+		  bottomPanel.add(plotFile);
+		  bottomPanel.add(new JLabel("Data File"));
+		  bottomPanel.add(dataFile); 
+		  bottomPanel.add(new JLabel(""));
+		 
 		  JCatPanel panel = new JCatPanel();
 		  JPanel outPanel = new JPanel();
-		  outPanel=panel.catPanel(leftPanel,rightPanel);
+		  outPanel=panel.catPanel(topPanel,bottomPanel);
 		  outPanel.setBorder(BorderFactory.createEtchedBorder());
 		  
 		  return outPanel;
@@ -319,19 +331,21 @@ public class WindowSetUp extends MenuBarSepUp implements ActionListener  {
 	}
 
 	private JPanel createFixedEmissionsPanel() {
-		final JPanel leftPanel = new JPanel ( new GridLayout(5,1));
+		final JPanel leftPanel = new JPanel ( new GridLayout(6,1));
 		  leftPanel.add(new JLabel(" FIXED EMISSIONS"));
 		  leftPanel.add(new JLabel(" Emissions per year (GtC) "));
 		  leftPanel.add(new JLabel(" CO2 concentration start (ppm) "));
 		  leftPanel.add(new JLabel(" Start year "));
 		  leftPanel.add(new JLabel(" Years run "));
+		  leftPanel.add(new JLabel(""));
 		  
-		  final JPanel rightPanel = new JPanel ( new GridLayout(5,1));
+		  final JPanel rightPanel = new JPanel ( new GridLayout(6,1));
 		  rightPanel.add(new JLabel(""));
 		  rightPanel.add(SIn);
 		  rightPanel.add(C0In);
 		  rightPanel.add(startYearIn);
 		  rightPanel.add(YearsIn);
+		  rightPanel.add(new JLabel(""));
 		 
 		  JSideCatPanel panel = new JSideCatPanel();
 		  return panel.sideCatPanel(leftPanel,rightPanel);
@@ -385,8 +399,8 @@ public static void setEnabledAll(Container container, boolean enabled) {
 	   if (components.length > 0) {
 	      for (Component component : components) {
 	         component.setEnabled(enabled);
-	         if (component instanceof Container) { // has to be a container to contain components
-	            setEnabledAll((Container)component, enabled); // the recursive call
+	         if (component instanceof Container) { 
+	            setEnabledAll((Container)component, enabled); 
 	         }
 	      }
 	   }
@@ -426,18 +440,18 @@ public static void setEnabledAll(Container container, boolean enabled) {
 		RunModel rm = new RunModel();
 		
 	    if (sim==1){
-	    	System.out.format("Test Model");
+	 //   	System.out.format("Test Model");
 	    	rm.testModel(model,  outputCarbonData, outputCarbonChart);
 	    	setSummaryData(rm);
 	    }
 	    else if (sim==2){
-	    	System.out.format("Fixed Emission Scenarios"); 
+	   // 	System.out.format("Fixed Emission Scenarios"); 
 	    	rm.fixed_emissions(model, S, C0, startYear, Years, outputCarbonData, outputCarbonChart); 
 	    	 setSummaryData(rm);
 	    	   
 	    }
 	    else if (sim==3){
-	    	System.out.format("IPCC Emission Scenarios"); 
+	  //  	System.out.format("IPCC Emission Scenarios"); 
 	    	rm.ipcc(model, scenario, outputCarbonData, outputCarbonChart);
 	    	setSummaryData(rm);
 	    	

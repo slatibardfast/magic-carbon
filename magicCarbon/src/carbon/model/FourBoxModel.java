@@ -10,8 +10,11 @@ package carbon.model;
 * @author Will Grey
 * 
 * @version 2015-03-23
-*
-*********************/
+* 
+* This is free and unencumbered software released into the public domain.
+*  For more information, please refer to <http://unlicense.org/>
+*/
+
 
 public class FourBoxModel {
 

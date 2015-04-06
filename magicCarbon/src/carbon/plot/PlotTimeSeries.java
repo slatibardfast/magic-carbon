@@ -6,6 +6,16 @@ import org.jfree.data.time.*;
 
 import java.io.*;
 
+/**
+ * 
+ * @author will Grey
+ * 
+ * @version  28/3/2015
+ * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
+ */
+
 public class PlotTimeSeries extends Year {
 	
 	

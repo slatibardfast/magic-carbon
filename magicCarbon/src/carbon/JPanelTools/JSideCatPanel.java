@@ -13,6 +13,8 @@ import javax.swing.JPanel;
  * 
  * @version 2015-04-04
  * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
  */
 
 public class JSideCatPanel {

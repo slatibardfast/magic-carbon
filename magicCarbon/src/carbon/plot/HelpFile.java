@@ -1,6 +1,6 @@
 package carbon.plot;
 
-/************
+/**
  * 
  * Help text.
  * 
@@ -10,6 +10,9 @@ package carbon.plot;
  * @author will Grey
  * 
  * @version  28/3/2015
+ * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
  */
 
 public class HelpFile {

@@ -32,8 +32,18 @@
   <target name="dist" depends="compile" description="generate the distribution" >
     <jar jarfile="magicCarbon.jar" basedir="${bin}">
      <manifest>
-       <attribute name="Main-Class" value="carbon/model/magicCarbon"/>
+       <attribute name="Main-Class" value="carbon/model/MagicCarbon"/>
        <attribute name="Class-Path" value="lib/jcommon-1.0.23.jar lib/jfreechart-1.0.19.jar"/>
+     </manifest> 
+    </jar>
+  </target>
+
+<target name="distLib" depends="compile" description="generate the distribution with internal libraries" >
+    <jar jarfile="magicCarbonLib.jar" basedir="${bin}">
+          <zipgroupfileset dir="." includes="*.jar"/>
+        <zipgroupfileset dir="lib" includes="*.jar"/>
+     <manifest>
+       <attribute name="Main-Class" value="carbon/model/MagicCarbon"/>
      </manifest> 
     </jar>
   </target>

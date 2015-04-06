@@ -1,6 +1,6 @@
 package carbon.model;
 
-/*********************
+/**
 *
 * magicarbon (Model of Global AtmospherIc Carbon)
 *
@@ -10,7 +10,11 @@ package carbon.model;
 * 
 * @version 2015-04-03
 *
-**********************/
+* 
+* This is free and unencumbered software released into the public domain.
+*  For more information, please refer to <http://unlicense.org/>
+*/
+
 
  public class CarbonConstants{
 

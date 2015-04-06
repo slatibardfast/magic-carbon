@@ -8,13 +8,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/*
+/**
  *  Display Plots
  * 
  * @ author Will Grey
  * 
  * @ version 2015-04-04
  * 
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
  */
 
 public class DisplayImage  {

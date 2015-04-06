@@ -1,6 +1,6 @@
 package carbon.model;
 
-/**********
+/**
 *
 * magicarbon (Model of Global AtmospherIc Carbon)
 *
@@ -9,8 +9,10 @@ package carbon.model;
 * @author Will Grey
 *
 * @version 2014-08-22
-*
-**********/
+* 
+* This is free and unencumbered software released into the public domain.
+*  For more information, please refer to <http://unlicense.org/> 
+*/
 
 import javax.swing.*;
 import carbon.plot.*;

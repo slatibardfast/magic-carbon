@@ -11,7 +11,9 @@ import java.util.*;
  * 
  * @version 2015-04-04
  * 
- */
+ * This is free and unencumbered software released into the public domain.
+ *  For more information, please refer to <http://unlicense.org/>
+ */ 
 
 public class JRadioPanelGroup {
    
@@ -31,6 +33,7 @@ public class JRadioPanelGroup {
 		}
 		
 		radioButtons.get(0).setSelected(true);
+		radioButtonPanel.add(new JLabel(""));
 		 radioButtonPanel.setBorder(BorderFactory.createEtchedBorder());
 		 return radioButtonPanel;
 	}
