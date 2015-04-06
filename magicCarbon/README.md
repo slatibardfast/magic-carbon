@@ -33,13 +33,13 @@ RUNNING THE MODEL
 
 REFERENCES 
 (1) LeQuere (2009) Nature Geosciences
-(2) Mackay et al http:www.atmosedu.comphysletsGlobalPollutionCO2assign.htm 
+(2) Mackay et al http//:www.atmosedu.comphysletsGlobalPollutionCO2assign.htm 
 (3) Rodhe (1979) Tellus
 (4) Boucher et al, (2008) Climatic Change
 (5) Joos and Bruno (1997) Phys. and Chem. of the Earth
-(6) http:co2now.orgCurrent-CO2CO2-Nownoaa-mauna-loa-co2-data.html
-(7) http:co2now.org 
-(8) http:sres.ciesin.orgfinal_data.html;
+(6) http//:co2now.orgCurrent-CO2CO2-Nownoaa-mauna-loa-co2-data.html
+(7) http//:co2now.org 
+(8) http//:sres.ciesin.orgfinal_data.html;
 
 REQUIREMENTS
 https://github.com/jfree/jfreechart-fse
