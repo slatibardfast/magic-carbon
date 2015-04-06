@@ -20,32 +20,50 @@ There exists concurrent datasets on atmospheric observations and anthropogenic e
 IPCC SRES
 
 Values for different IPCC special report emission scenarios (SRES) for carbon are from (8) where emissions are in GtC per year.  There are four families of scenarios: A1, A2, B1 and B2 representing a range of story lines. 
+
 A1 - Rapid economic growth, population peaks 2050, introduction of efficient technologies 
+
 A2 - Continuously growing population, slow introduction of efficient technologies 
+
 B1 - Population peaks 2050, rapid adoption of efficient technologies 
+
 B2 - Continuously growing population, regional development 
 
 RUNNING THE MODEL
 
 (a) Selecting simulation:
-   -Test against obsevations over the period (1959-2008) 
+
+   -Test against obsevations over the period (1959-2008)
+   
    -Fixed emission can be run over any period
+   
    -Runs using the IPCC scenarios over the period (1990-2100)
+   
 (b) Model - One of the four models discussed above can be run.
+
 (c) IPCC SRES -  One of 6 scenarios can be run.  There are 3 A1 scenarios, and 1 scenario from each of the other 3 families.
+
 (d) Fixed emissions -  Fixed emissions scenarios allow the greates flexibility and any period can be selected.
+
 (e) Outputs - Plots and datasets are output.  A summary of the output is also given.
 
 REFERENCES
 
 (1) LeQuere (2009) Nature Geosciences
+
 (2) Mackay et al http://www.atmosedu.comphysletsGlobalPollutionCO2assign.htm 
+
 (3) Rodhe (1979) Tellus
+
 (4) Boucher et al, (2008) Climatic Change
+
 (5) Joos and Bruno (1997) Phys. and Chem. of the Earth
+
 (6) http://co2now.orgCurrent-CO2CO2-Nownoaa-mauna-loa-co2-data.html
-(7) http://co2now.org 
-(8) http://sres.ciesin.orgfinal_data.html;
+
+(7) http://co2now.org
+
+(8) http://sres.ciesin.orgfinal_data.html
 
 REQUIREMENTS
 
