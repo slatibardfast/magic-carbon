@@ -42,5 +42,5 @@ REFERENCES
 (8) http:sres.ciesin.orgfinal_data.html;
 
 REQUIREMENTS
-Needs the: https://github.com/jfree/jfreechart-fse
+https://github.com/jfree/jfreechart-fse
 
